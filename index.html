@@ -86,9 +86,159 @@
                 filter: drop-shadow(0 0 10px #9B59B6);
             }
         }
+        /* Pop-Up Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-content {
+            position: relative;
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            text-align: center;
+            border: 2px solid #9B59B6;
+            animation: bounceIn 1s ease-out;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.2); opacity: 1; }
+            80% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #f5f5f5;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .popup-close:hover {
+            color: #9B59B6;
+        }
+        .popup-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f5f5f5;
+            margin-bottom: 1rem;
+            display: inline-block;
+            border-right: 2px solid #9B59B6;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .typewriter {
+            animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #9B59B6; }
+        }
+        .popup-swirls {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .swirl-orbit {
+            stroke: #9B59B6;
+            stroke-width: 3;
+            fill: none;
+            animation: orbit 5s linear infinite, swirlGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .popup-exit {
+            animation: sparkleOut 0.5s ease-out forwards;
+        }
+        @keyframes sparkleOut {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+            100% { opacity: 0; transform: scale(0); filter: brightness(2); }
+        }
+        /* Service Box Hover Effects */
+        .service-box {
+            position: relative;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            overflow: hidden;
+        }
+        .service-box:hover {
+            background-color: #2a1a3a;
+            transform: scale(1.05);
+        }
+        .service-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(155, 89, 182, 0.5) 0%, rgba(255, 0, 255, 0.3) 50%, rgba(255, 69, 0, 0.2) 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+            animation: flicker 1.5s infinite ease-in-out alternate;
+        }
+        .service-box:hover::before {
+            opacity: 1;
+        }
+        @keyframes flicker {
+            0% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.1); filter: brightness(1.5); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+        /* Add slight delay variations for staggered effect */
+        .service-box:nth-child(1)::before { animation-delay: 0s; }
+        .service-box:nth-child(2)::before { animation-delay: 0.1s; }
+        .service-box:nth-child(3)::before { animation-delay: 0.2s; }
+        .service-box:nth-child(4)::before { animation-delay: 0.3s; }
+        .service-box:nth-child(5)::before { animation-delay: 0.4s; }
+        .service-box:nth-child(6)::before { animation-delay: 0.5s; }
+        .service-box:nth-child(7)::before { animation-delay: 0.6s; }
+        .service-box:nth-child(8)::before { animation-delay: 0.7s; }
     </style>
 </head>
 <body class="relative">
+    <!-- Pop-Up -->
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-content">
+            <span id="popupClose" class="popup-close">×</span>
+            <svg class="popup-swirls" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <g transform="translate(50, 50)">
+                    <path class="swirl-orbit" d="M0,40 A40,40 0 0,1 40,0 A40,40 0 0,1 0,-40 A40,40 0 0,1 -40,0 A40,40 0 0,1 0,40" transform-origin="center"/>
+                    <path class="swirl-orbit" d="M0,30 A30,30 0 0,0 30,0 A30,30 0 0,0 0,-30 A30,30 0 0,0 -30,0 A30,30 0 0,0 0,30" transform-origin="center"/>
+                </g>
+            </svg>
+            <div id="popupText" class="popup-text typewriter">We’re Here to Create Your Dreams</div>
+            <a href="#contact" id="popupButton" class="inline-block bg-accent text-white font-semibold py-2 px-4 rounded-full hover:bg-purple-700 transition btn-glow">Let’s Get Started</a>
+        </div>
+    </div>
+
     <!-- Particles.js Background -->
     <div id="particles-js"></div>
 
@@ -98,12 +248,9 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <svg class="h-12 w-12 logo-glow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background Circle -->
                         <circle cx="50" cy="50" r="48" fill="#000000" stroke="#000000" stroke-width="4"/>
-                        <!-- Purple Swirls -->
                         <path class="swirl" d="M30 20 C 40 10, 60 10, 70 20 S 90 40, 70 60 C 60 70, 40 70, 30 60 S 10 40, 30 20"/>
                         <path class="swirl" d="M20 30 C 10 40, 10 60, 20 70 S 40 90, 60 70 C 70 60, 70 40, 60 30 S 40 10, 20 30"/>
-                        <!-- AFU Text -->
                         <text x="50" y="65" font-family="Inter, sans-serif" font-size="40" font-weight="bold" fill="#ffffff" text-anchor="middle" alignment-baseline="middle">AFU</text>
                     </svg>
                 </div>
@@ -139,42 +286,42 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-4xl font-bold text-white mb-12 animate-fade-in">What We Offer</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v10H7V7zm2 2v6h6V9H9z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">Graphic Design</h3>
                     <p class="text-gray-300">Stunning logos, branding, and visuals that make your business stand out.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h10v2H7v-2z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">Web Development</h3>
                     <p class="text-gray-300">Modern, responsive websites tailored to your needs.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">Social Media Management</h3>
                     <p class="text-gray-300">Engaging content and strategies to grow your online presence.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">Video Editing</h3>
                     <p class="text-gray-300">Professional video editing to enhance your brand's storytelling.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">Copywriting</h3>
                     <p class="text-gray-300">Compelling copy that resonates with your audience and drives action.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">SEO Optimization</h3>
                     <p class="text-gray-300">Boost your website’s visibility with expert SEO strategies.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 13H5V7h14v10z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">Content Creation</h3>
                     <p class="text-gray-300">High-quality blog posts, articles, and multimedia content.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
+                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
                     <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17v-2h2v2h-2zm1-3c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"></path></svg>
                     <h3 class="text-xl font-semibold text-accent mb-4">Digital Marketing</h3>
                     <p class="text-gray-300">Targeted campaigns to increase your reach and conversions.</p>
@@ -188,7 +335,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
             <h2 class="text-4xl font-bold text-white mb-6">Get In Touch</h2>
             <p class="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">Ready to elevate your brand? Contact us today for a free consultation or sample!</p>
-            <a href="mailto:contact@afu.com" class="inline-block bg-accent text-white font-semibold py-3 px-6 rounded-full hover:bg-purple-700 transition hover-lift btn-glow">Email Us</a>
+            <a href="mailto:alyasinasadsko@gmail.com" class="inline-block bg-accent text-white font-semibold py-3 px-6 rounded-full hover:bg-purple-700 transition hover-lift btn-glow">Email Us</a>
         </div>
     </section>
 
@@ -209,7 +356,7 @@
                     <svg viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.708.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"></path></svg>
                 </a>
                 <a href="https://www.reddit.com/user/your_reddit_handle" target="_blank" class="social-icon">
-                    <svg viewBox="0 0 24 24"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.431.245l-1.651 5.204c-2.65.099-5.047.846-6.821 1.997-.479-.459-1.127-.745-1.84-.745-1.465 0-2.657 1.187-2.657 2.645 0 1.046.617 1.943 1.504 2.368.095.465.147.947.147 1.433 0 3.564 4.236 6.453 9.463 6.453 5.228 0 9.463-2.889 9.463-6.453 0-.486.051-.968.146-1.433.888-.425 1.505-1.322 1.505-2.368zM4.062 12.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5zm13.5 0c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5zm-7.5 4.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5z"></path></svg>
+                    <svg viewBox="0 0 24 24"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.431.245l-1.651 5.204c-2.65.099-5.047.846-6.821 1.997-.479-.459-1.127-.745-1.84-.745-1.465 0-2.657 1.187-2.657 2.645 0 1.046.617 1.943 1.504 2.368.095.465.147.947.147 1.433 0 3.564 4.236 6.453 9.463 6.453 5.228 0 9.463-2.889 9.463-6.453 0-.486.051-.968.146-1.433.888-.425 1.505-1.322 1.505-2.368zM4.062 12.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5zm13.5 0c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5zm-7.5 4.5c0-.828.672-1.5 1.5-嚐s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5z"></path></svg>
                 </a>
             </div>
             <p>© All rights reserved to AFU</p>
@@ -283,6 +430,33 @@
                 }
             },
             "retina_detect": true
+        });
+
+        // Pop-Up JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popupClose = document.getElementById('popupClose');
+            const popupButton = document.getElementById('popupButton');
+
+            // Check if pop-up has already been shown in this session
+            if (!sessionStorage.getItem('popupShown')) {
+                setTimeout(() => {
+                    popupOverlay.classList.add('active');
+                    sessionStorage.setItem('popupShown', 'true');
+                }, 500); // Delay for smoother page load
+            }
+
+            // Close pop-up on close button click
+            popupClose.addEventListener('click', () => {
+                popupOverlay.classList.remove('active');
+                popupOverlay.classList.add('popup-exit');
+            });
+
+            // Close pop-up and scroll to contact on button click
+            popupButton.addEventListener('click', () => {
+                popupOverlay.classList.remove('active');
+                popupOverlay.classList.add('popup-exit');
+            });
         });
     </script>
 </body>
