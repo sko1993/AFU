@@ -1,463 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFU - Creative Solutions for Your Business</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        .accent-color {
-            color: #9B59B6;
-        }
-        .bg-accent {
-            background-color: #9B59B6;
-        }
-        .text-accent {
-            color: #9B59B6;
-        }
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .social-icon {
-            width: 48px;
-            height: 48px;
-            fill: #f5f5f5;
-            transition: fill 0.3s ease;
-        }
-        .social-icon:hover {
-            fill: #9B59B6;
-        }
-        .hero-overlay {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-        }
-        .logo-glow {
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            from {
-                filter: drop-shadow(0 0 10px #9B59B6) drop-shadow(0 0 20px #9B59B6);
-            }
-            to {
-                filter: drop-shadow(0 0 20px #9B59B6) drop-shadow(0 0 30px #9B59B6);
-            }
-        }
-        .btn-glow {
-            transition: box-shadow 0.3s ease;
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 15px #9B59B6;
-        }
-        .swirl {
-            stroke: #9B59B6;
-            stroke-width: 4;
-            fill: none;
-            animation: swirlGlow 3s ease-in-out infinite alternate;
-        }
-        @keyframes swirlGlow {
-            from {
-                stroke: #9B59B6;
-                filter: drop-shadow(0 0 5px #9B59B6);
-            }
-            to {
-                stroke: #C78DDA;
-                filter: drop-shadow(0 0 10px #9B59B6);
-            }
-        }
-        /* Pop-Up Styles */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        .popup-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .popup-content {
-            position: relative;
-            background: #1a1a1a;
-            padding: 2rem;
-            border-radius: 1rem;
-            max-width: 500px;
-            text-align: center;
-            border: 2px solid #9B59B6;
-            animation: bounceIn 1s ease-out;
-        }
-        @keyframes bounceIn {
-            0% { transform: scale(0); opacity: 0; }
-            60% { transform: scale(1.2); opacity: 1; }
-            80% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            color: #f5f5f5;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .popup-close:hover {
-            color: #9B59B6;
-        }
-        .popup-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #f5f5f5;
-            margin-bottom: 1rem;
-            display: inline-block;
-            border-right: 2px solid #9B59B6;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        .typewriter {
-            animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: #9B59B6; }
-        }
-        .popup-swirls {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        .swirl-orbit {
-            stroke: #9B59B6;
-            stroke-width: 3;
-            fill: none;
-            animation: orbit 5s linear infinite, swirlGlow 2s ease-in-out infinite alternate;
-        }
-        @keyframes orbit {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .popup-exit {
-            animation: sparkleOut 0.5s ease-out forwards;
-        }
-        @keyframes sparkleOut {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.1); }
-            100% { opacity: 0; transform: scale(0); filter: brightness(2); }
-        }
-        /* Service Box Hover Effects */
-        .service-box {
-            position: relative;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            overflow: hidden;
-        }
-        .service-box:hover {
-            background-color: #2a1a3a;
-            transform: scale(1.05);
-        }
-        .service-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(155, 89, 182, 0.5) 0%, rgba(255, 0, 255, 0.3) 50%, rgba(255, 69, 0, 0.2) 100%);
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.5s ease;
-            animation: flicker 1.5s infinite ease-in-out alternate;
-        }
-        .service-box:hover::before {
-            opacity: 1;
-        }
-        @keyframes flicker {
-            0% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.1); filter: brightness(1.5); }
-            100% { transform: scale(1); filter: brightness(1); }
-        }
-        /* Add slight delay variations for staggered effect */
-        .service-box:nth-child(1)::before { animation-delay: 0s; }
-        .service-box:nth-child(2)::before { animation-delay: 0.1s; }
-        .service-box:nth-child(3)::before { animation-delay: 0.2s; }
-        .service-box:nth-child(4)::before { animation-delay: 0.3s; }
-        .service-box:nth-child(5)::before { animation-delay: 0.4s; }
-        .service-box:nth-child(6)::before { animation-delay: 0.5s; }
-        .service-box:nth-child(7)::before { animation-delay: 0.6s; }
-        .service-box:nth-child(8)::before { animation-delay: 0.7s; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFU Animated Brand Ad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #1a0033;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .container {
+      width: 1080px;
+      height: 1920px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #1a0033;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #d8b9ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #d8b9ff;
+      animation: floatParticle 10s infinite linear;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-1920px); }
+    }
+    .orb {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #00ffff, transparent);
+      border-radius: 50%;
+      box-shadow: 0 0 20px #00ffff;
+      animation: floatOrb 8s infinite ease-in-out;
+    }
+    @keyframes floatOrb {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0); }
+    }
+    .logo {
+      font-size: 60px;
+      color: #d8b9ff;
+      text-shadow: 0 0 10px #6d28d9;
+      animation: glow 1.5s infinite alternate;
+      margin-top: 50px;
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #6d28d9; }
+      100% { text-shadow: 0 0 20px #6d28d9, 0 0 30px #d8b9ff; }
+    }
+    .tagline {
+      font-size: 40px;
+      color: #fff;
+      text-shadow: 0 0 10px #00ffff;
+      margin-top: 20px;
+      animation: slideUp 2s ease-in-out;
+    }
+    @keyframes slideUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .services, .benefits {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .service-item, .benefit-item {
+      font-size: 30px;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700;
+      animation: highlight 10s infinite;
+    }
+    .service-item:nth-child(1) { animation-delay: 0s; }
+    .service-item:nth-child(2) { animation-delay: 1s; }
+    .service-item:nth-child(3) { animation-delay: 2s; }
+    .service-item:nth-child(4) { animation-delay: 3s; }
+    .service-item:nth-child(5) { animation-delay: 4s; }
+    .service-item:nth-child(6) { animation-delay: 5s; }
+    .benefit-item:nth-child(1) { animation-delay: 6s; }
+    .benefit-item:nth-child(2) { animation-delay: 7s; }
+    .benefit-item:nth-child(3) { animation-delay: 8s; }
+    @keyframes highlight {
+      0%, 20%, 100% { text-shadow: 0 0 10px #ffd700; }
+      10% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; }
+    }
+    .cta-button {
+      margin-top: 50px;
+      padding: 15px 30px;
+      font-size: 28px;
+      color: #fff;
+      background: #6d28d9;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 0 20px #d8b9ff;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @media (max-width: 1080px) {
+      .container {
+        width: 100%;
+        height: 100vh;
+      }
+      .logo { font-size: 40px; }
+      .tagline { font-size: 28px; }
+      .service-item, .benefit-item { font-size: 24px; }
+      .cta-button { font-size: 20px; padding: 10px 20px; }
+    }
+  </style>
 </head>
-<body class="relative">
-    <!-- Pop-Up -->
-    <div id="popupOverlay" class="popup-overlay">
-        <div class="popup-content">
-            <span id="popupClose" class="popup-close">×</span>
-            <svg class="popup-swirls" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <g transform="translate(50, 50)">
-                    <path class="swirl-orbit" d="M0,40 A40,40 0 0,1 40,0 A40,40 0 0,1 0,-40 A40,40 0 0,1 -40,0 A40,40 0 0,1 0,40" transform-origin="center"/>
-                    <path class="swirl-orbit" d="M0,30 A30,30 0 0,0 30,0 A30,30 0 0,0 0,-30 A30,30 0 0,0 -30,0 A30,30 0 0,0 0,30" transform-origin="center"/>
-                </g>
-            </svg>
-            <div id="popupText" class="popup-text typewriter">We’re Here to Create Your Dreams</div>
-            <a href="#contact" id="popupButton" class="inline-block bg-accent text-white font-semibold py-2 px-4 rounded-full hover:bg-purple-700 transition btn-glow">Let’s Get Started</a>
-        </div>
+<body>
+  <div class="container">
+    <div class="particle" style="top: 0; left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 0; left: 30%; animation-delay: 2s;"></div>
+    <div class="particle" style="top: 0; left: 50%; animation-delay: 4s;"></div>
+    <div class="particle" style="top: 0; left: 70%; animation-delay: 6s;"></div>
+    <div class="particle" style="top: 0; left: 90%; animation-delay: 8s;"></div>
+    <div class="orb" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+    <div class="orb" style="top: 40%; left: 75%; animation-delay: 2s;"></div>
+    <div class="orb" style="top: 60%; left: 25%; animation-delay: 4s;"></div>
+    <div class="orb" style="top: 80%; left: 85%; animation-delay: 6s;"></div>
+    <div class="logo">AFU – All For You</div>
+    <div class="tagline">Your one-stop creative solution</div>
+    <div class="services">
+      <div class="service-item">🎨 Graphic Design</div>
+      <div class="service-item">🎥 Video Editing</div>
+      <div class="service-item">🌐 Website Building</div>
+      <div class="service-item">📢 Social Media Management</div>
+      <div class="service-item">✍️ Copywriting</div>
+      <div class="service-item">📱 Content Creation</div>
     </div>
-
-    <!-- Particles.js Background -->
-    <div id="particles-js"></div>
-
-    <!-- Navbar -->
-    <nav class="bg-gray-800 shadow-lg fixed w-full z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <svg class="h-12 w-12 logo-glow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="48" fill="#000000" stroke="#000000" stroke-width="4"/>
-                        <path class="swirl" d="M30 20 C 40 10, 60 10, 70 20 S 90 40, 70 60 C 60 70, 40 70, 30 60 S 10 40, 30 20"/>
-                        <path class="swirl" d="M20 30 C 10 40, 10 60, 20 70 S 40 90, 60 70 C 70 60, 70 40, 60 30 S 40 10, 20 30"/>
-                        <text x="50" y="65" font-family="Inter, sans-serif" font-size="40" font-weight="bold" fill="#ffffff" text-anchor="middle" alignment-baseline="middle">AFU</text>
-                    </svg>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="#home" class="text-gray-300 hover:text-accent">Home</a>
-                    <a href="#about" class="text-gray-300 hover:text-accent">About</a>
-                    <a href="#services" class="text-gray-300 hover:text-accent">Services</a>
-                    <a href="#contact" class="text-gray-300 hover:text-accent">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative hero-overlay">
-        <div class="text-center px-4 animate-fade-in z-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-white">Welcome to AFU</h1>
-            <p class="text-xl md:text-2xl mb-6 text-gray-300">Turning Your Ideas Into Impact</p>
-            <a href="https://www.instagram.com/sko.afu/" target="_blank" class="inline-block bg-accent text-white font-semibold py-3 px-6 rounded-full hover:bg-purple-700 transition hover-lift btn-glow">Check Out Our Work</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-800 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-            <h2 class="text-4xl font-bold text-white mb-6">Who We Are</h2>
-            <p class="text-lg text-gray-300 max-w-3xl mx-auto">AFU (All For You) is your creative partner. We empower small businesses with bold, affordable solutions that make your brand unforgettable. Let’s turn your vision into reality.</p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-900 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-white mb-12 animate-fade-in">What We Offer</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v10H7V7zm2 2v6h6V9H9z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">Graphic Design</h3>
-                    <p class="text-gray-300">Stunning logos, branding, and visuals that make your business stand out.</p>
-                </div>
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3v18h18V3zm-2 16H5V5h14v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h10v2H7v-2z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">Web Development</h3>
-                    <p class="text-gray-300">Modern, responsive websites tailored to your needs.</p>
-                </div>
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">Social Media Management</h3>
-                    <p class="text-gray-300">Engaging content and strategies to grow your online presence.</p>
-                </div>
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">Video Editing</h3>
-                    <p class="text-gray-300">Professional video editing to enhance your brand's storytelling.</p>
-                </div>
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">Copywriting</h3>
-                    <p class="text-gray-300">Compelling copy that resonates with your audience and drives action.</p>
-                </div>
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">SEO Optimization</h3>
-                    <p class="text-gray-300">Boost your website’s visibility with expert SEO strategies.</p>
-                </div>
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 13H5V7h14v10z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">Content Creation</h3>
-                    <p class="text-gray-300">High-quality blog posts, articles, and multimedia content.</p>
-                </div>
-                <div class="service-box bg-gray-800 p-6 rounded-lg shadow-md hover-lift animate-fade-in">
-                    <svg class="w-12 h-12 mx-auto mb-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17v-2h2v2h-2zm1-3c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"></path></svg>
-                    <h3 class="text-xl font-semibold text-accent mb-4">Digital Marketing</h3>
-                    <p class="text-gray-300">Targeted campaigns to increase your reach and conversions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-900 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-            <h2 class="text-4xl font-bold text-white mb-6">Get In Touch</h2>
-            <p class="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">Ready to elevate your brand? Contact us today for a free consultation or sample!</p>
-            <a href="mailto:alyasinasadsko@gmail.com" class="inline-block bg-accent text-white font-semibold py-3 px-6 rounded-full hover:bg-purple-700 transition hover-lift btn-glow">Email Us</a>
-        </div>
-    </section>
-
-    <!-- Footer with Social Media Icons -->
-    <footer class="bg-gray-800 text-gray-300 py-6 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://www.tiktok.com/@your_tiktok_handle" target="_blank" class="social-icon">
-                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64h.89V9.33h-.89a6.33 6.33 0 00-5.48 9.5 6.33 6.33 0 005.48 3.17 6.33 6.33 0 006.33-6.33V8.81a8.22 8.22 0 004.83 1.56V6.69h-.01z"></path></svg>
-                </a>
-                <a href="https://www.instagram.com/sko.afu/" target="_blank" class="social-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.332.014 7.052.072 3.668.227 1.981 1.97 1.826 5.354.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.155 3.384 1.898 5.071 5.282 5.226 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c3.384-.155 5.071-1.842 5.226-5.226.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-3.384-1.842-5.071-5.226-5.226C15.668.014 15.259 0 12 0z"></path><path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998z"></path><circle cx="18.406" cy="5.594" r="1.44"></circle></svg>
-                </a>
-                <a href="https://discord.gg/your_discord_invite" target="_blank" class="social-icon">
-                    <svg viewBox="0 0 24 24"><path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.07.037c-.21.375-.444.864-.608 1.249a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.249.077.077 0 00-.07-.037A19.736 19.736 0 003.677 4.369a.069.069 0 00-.029.027C.533 9.045-.319 13.579.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.127 10.248 10.248 0 00.356-.257.072.072 0 01.076-.014c3.931 1.793 8.183 1.793 12.077 0a.072.072 0 01.076.014c.115.089.235.18.356.257a.075.075 0 01-.006.127 13.107 13.107 0 01-1.872.892.077.077 0 00-.04.106c.36.698.772 1.362 1.225 1.994a.076.076 0 00.084.028 19.9 19.9 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.331c-1.182 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.175 1.095 2.156 2.419 0 1.333-.956 2.418-2.156 2.418zm7.974 0c-1.182 0-2.156-1.085-2.156-2.419 0-1.333.955-2.418 2.156-2.418 1.21 0 2.175 1.095 2.156 2.419 0 1.333-.956 2.418-2.156 2.418z"></path></svg>
-                </a>
-                <a href="https://twitter.com/your_twitter_handle" target="_blank" class="social-icon">
-                    <svg viewBox="0 0 24 24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.708.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"></path></svg>
-                </a>
-                <a href="https://www.reddit.com/user/your_reddit_handle" target="_blank" class="social-icon">
-                    <svg viewBox="0 0 24 24"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.431.245l-1.651 5.204c-2.65.099-5.047.846-6.821 1.997-.479-.459-1.127-.745-1.84-.745-1.465 0-2.657 1.187-2.657 2.645 0 1.046.617 1.943 1.504 2.368.095.465.147.947.147 1.433 0 3.564 4.236 6.453 9.463 6.453 5.228 0 9.463-2.889 9.463-6.453 0-.486.051-.968.146-1.433.888-.425 1.505-1.322 1.505-2.368zM4.062 12.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5zm13.5 0c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5zm-7.5 4.5c0-.828.672-1.5 1.5-嚐s1.5.672 1.5 1.5-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5z"></path></svg>
-                </a>
-            </div>
-            <p>© All rights reserved to AFU</p>
-        </div>
-    </footer>
-
-    <!-- Particles.js Configuration -->
-    <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": false
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": false
-                    },
-                    "onclick": {
-                        "enable": false
-                    },
-                    "resize": true
-                }
-            },
-            "retina_detect": true
-        });
-
-        // Pop-Up JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            const popupOverlay = document.getElementById('popupOverlay');
-            const popupClose = document.getElementById('popupClose');
-            const popupButton = document.getElementById('popupButton');
-
-            // Check if pop-up has already been shown in this session
-            if (!sessionStorage.getItem('popupShown')) {
-                setTimeout(() => {
-                    popupOverlay.classList.add('active');
-                    sessionStorage.setItem('popupShown', 'true');
-                }, 500); // Delay for smoother page load
-            }
-
-            // Close pop-up on close button click
-            popupClose.addEventListener('click', () => {
-                popupOverlay.classList.remove('active');
-                popupOverlay.classList.add('popup-exit');
-            });
-
-            // Close pop-up and scroll to contact on button click
-            popupButton.addEventListener('click', () => {
-                popupOverlay.classList.remove('active');
-                popupOverlay.classList.add('popup-exit');
-            });
-        });
-    </script>
+    <div class="benefits">
+      <div class="benefit-item">✅ All-in-One Service</div>
+      <div class="benefit-item">✅ Customized for You</div>
+      <div class="benefit-item">✅ Fast, Professional, Affordable</div>
+    </div>
+    <a href="#" class="cta-button">DM or Email Now!</a>
+  </div>
 </body>
 </html>
