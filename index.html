@@ -3,159 +3,308 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AFU Animated Brand Ad</title>
+  <title>AFU – Your Creative Partner</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <style>
     body {
       margin: 0;
       padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #1a0033;
+      color: #fff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      background: #1a0033;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #d8b9ff;
+    }
+    .hero {
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: #1a0033;
-      overflow: hidden;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .container {
-      width: 1080px;
-      height: 1920px;
+      text-align: center;
+      background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
       position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0 0 10px #d8b9ff;
+    }
+    .hero p {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+    .cta-button {
+      padding: 15px 30px;
+      background: #6d28d9;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+    .cta-button:hover {
+      background: #4b0082;
+    }
+    section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .about, .services, .contact {
+      background: #2c0055;
+      margin: 20px 0;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .about p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .services .service-grid {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .service-card {
+      background: #3a0077;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      width: 200px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #d8b9ff;
+    }
+    .service-card i {
+      font-size: 48px;
+      color: #d8b9ff;
+      margin-bottom: 10px;
+    }
+    .contact a {
+      color: #d8b9ff;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 0 10px;
+      transition: color 0.3s, text-decoration 0.3s;
+    }
+    .contact a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    footer {
       background: #1a0033;
+      padding: 20px;
+      text-align: center;
+    }
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
+      z-index: 0;
     }
     .particle {
       position: absolute;
-      width: 5px;
-      height: 5px;
       background: #d8b9ff;
       border-radius: 50%;
-      box-shadow: 0 0 10px #d8b9ff;
-      animation: floatParticle 10s infinite linear;
+      opacity: 0.5;
+      animation: float 10s infinite;
     }
-    @keyframes floatParticle {
+    .particle:nth-child(1) {
+      width: 10px;
+      height: 10px;
+      left: 10%;
+      animation-duration: 15s;
+    }
+    .particle:nth-child(2) {
+      width: 15px;
+      height: 15px;
+      left: 30%;
+      animation-duration: 20s;
+    }
+    .particle:nth-child(3) {
+      width: 8px;
+      height: 8px;
+      left: 50%;
+      animation-duration: 12s;
+    }
+    .particle:nth-child(4) {
+      width: 12px;
+      height: 12px;
+      left: 70%;
+      animation-duration: 18s;
+    }
+    .particle:nth-child(5) {
+      width: 10px;
+      height: 10px;
+      left: 90%;
+      animation-duration: 22s;
+    }
+    @keyframes float {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-1920px); }
-    }
-    .orb {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle, #00ffff, transparent);
-      border-radius: 50%;
-      box-shadow: 0 0 20px #00ffff;
-      animation: floatOrb 8s infinite ease-in-out;
-    }
-    @keyframes floatOrb {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-30px); }
+      50% { transform: translateY(-100vh); }
       100% { transform: translateY(0); }
     }
-    .logo {
-      font-size: 60px;
-      color: #d8b9ff;
-      text-shadow: 0 0 10px #6d28d9;
-      animation: glow 1.5s infinite alternate;
-      margin-top: 50px;
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px #6d28d9; }
-      100% { text-shadow: 0 0 20px #6d28d9, 0 0 30px #d8b9ff; }
-    }
-    .tagline {
-      font-size: 40px;
-      color: #fff;
-      text-shadow: 0 0 10px #00ffff;
-      margin-top: 20px;
-      animation: slideUp 2s ease-in-out;
-    }
-    @keyframes slideUp {
-      0% { transform: translateY(50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-    .services, .benefits {
-      margin-top: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .service-item, .benefit-item {
-      font-size: 30px;
-      color: #ffd700;
-      text-shadow: 0 0 10px #ffd700;
-      animation: highlight 10s infinite;
-    }
-    .service-item:nth-child(1) { animation-delay: 0s; }
-    .service-item:nth-child(2) { animation-delay: 1s; }
-    .service-item:nth-child(3) { animation-delay: 2s; }
-    .service-item:nth-child(4) { animation-delay: 3s; }
-    .service-item:nth-child(5) { animation-delay: 4s; }
-    .service-item:nth-child(6) { animation-delay: 5s; }
-    .benefit-item:nth-child(1) { animation-delay: 6s; }
-    .benefit-item:nth-child(2) { animation-delay: 7s; }
-    .benefit-item:nth-child(3) { animation-delay: 8s; }
-    @keyframes highlight {
-      0%, 20%, 100% { text-shadow: 0 0 10px #ffd700; }
-      10% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; }
-    }
-    .cta-button {
-      margin-top: 50px;
-      padding: 15px 30px;
-      font-size: 28px;
-      color: #fff;
-      background: #6d28d9;
-      border: none;
-      border-radius: 25px;
-      box-shadow: 0 0 20px #d8b9ff;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    @media (max-width: 1080px) {
-      .container {
-        width: 100%;
-        height: 100vh;
+    @media (max-width: 768px) {
+      .service-grid {
+        flex-direction: column;
+        align-items: center;
       }
-      .logo { font-size: 40px; }
-      .tagline { font-size: 28px; }
-      .service-item, .benefit-item { font-size: 24px; }
-      .cta-button { font-size: 20px; padding: 10px 20px; }
+      .service-card {
+        width: 80%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="particle" style="top: 0; left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="top: 0; left: 30%; animation-delay: 2s;"></div>
-    <div class="particle" style="top: 0; left: 50%; animation-delay: 4s;"></div>
-    <div class="particle" style="top: 0; left: 70%; animation-delay: 6s;"></div>
-    <div class="particle" style="top: 0; left: 90%; animation-delay: 8s;"></div>
-    <div class="orb" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
-    <div class="orb" style="top: 40%; left: 75%; animation-delay: 2s;"></div>
-    <div class="orb" style="top: 60%; left: 25%; animation-delay: 4s;"></div>
-    <div class="orb" style="top: 80%; left: 85%; animation-delay: 6s;"></div>
-    <div class="logo">AFU – All For You</div>
-    <div class="tagline">Your one-stop creative solution</div>
-    <div class="services">
-      <div class="service-item">🎨 Graphic Design</div>
-      <div class="service-item">🎥 Video Editing</div>
-      <div class="service-item">🌐 Website Building</div>
-      <div class="service-item">📢 Social Media Management</div>
-      <div class="service-item">✍️ Copywriting</div>
-      <div class="service-item">📱 Content Creation</div>
-    </div>
-    <div class="benefits">
-      <div class="benefit-item">✅ All-in-One Service</div>
-      <div class="benefit-item">✅ Customized for You</div>
-      <div class="benefit-item">✅ Fast, Professional, Affordable</div>
-    </div>
-    <a href="#" class="cta-button">DM or Email Now!</a>
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
+  <header>
+    <div class="container">
+      <h1>AFU – Your Creative Partner</h1>
+    </div>
+  </header>
+  <section class="hero" data-aos="fade-in">
+    <div class="hero-content">
+      <h2>Elevate Your Brand Today</h2>
+      <p>Unleash your potential with our creative expertise.</p>
+      <a href="#contact" class="cta-button">Contact Us</a>
+    </div>
+  </section>
+  <section id="about" data-aos="fade-up">
+    <div class="container">
+      <div class="about">
+        <h2>About AFU</h2>
+        <p>At AFU, we’re passionate about turning your vision into reality. We deliver innovative solutions that make your brand stand out in a crowded market. Let’s build something extraordinary together.</p>
+      </div>
+    </div>
+  </section>
+  <section id="services" data-aos="fade-up">
+    <div class="container">
+      <h2>What We Offer</h2>
+      <div class="services">
+        <div class="service-grid">
+          <div class="service-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Graphic Design</h3>
+            <p>Stunning visuals to captivate your audience.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-video"></i>
+            <h3>Video Editing</h3>
+            <p>Engaging videos that tell your story.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-globe"></i>
+            <h3>Website Building</h3>
+            <p>Sleek, fast, and mobile-friendly sites.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Social Media Management</h3>
+            <p>Strategies that grow your audience.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-pen"></i>
+            <h3>Copywriting</h3>
+            <p>Persuasive content that converts.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-camera"></i>
+            <h3>Content Creation</h3>
+            <p>Trendy posts that boost engagement.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Digital Marketing</h3>
+            <p>Targeted campaigns to skyrocket your reach.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-palette"></i>
+            <h3>Branding</h3>
+            <p>Unique identities that leave a lasting impression.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact" data-aos="fade-up">
+    <div class="container">
+      <div class="contact">
+        <h2>Get in Touch</h2>
+        <p>Ready to take your brand to the next level? Reach out now!</p>
+        <p>
+          <a href="mailto:alyasinasadsko@gmail.com"><i class="fas fa-envelope"></i> alyasinasadsko@gmail.com</a> |
+          <a href="https://instagram.com/sko.afu" target="_blank"><i class="fab fa-instagram"></i> @sko.afu</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>© 2023 AFU. All rights reserved.</p>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
