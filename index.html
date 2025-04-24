@@ -89,28 +89,29 @@
       to { opacity: 1; }
     }
     .hero h2 {
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 48px;
       margin-bottom: 20px;
-      color: #fff;
-      text-shadow: 0 0 10px #d8b9ff;
+      color: #800080;
+      text-shadow: 0 0 10px #800080;
     }
     .hero p {
       font-size: 24px;
       margin-bottom: 30px;
-      color: #fff;
+      color: #d8b9ff;
     }
     .cta-button {
       padding: 15px 30px;
-      background: #6d28d9;
+      background: #800080;
       color: #fff;
       text-decoration: none;
       border-radius: 5px;
       font-size: 18px;
-      transition: background 0.3s;
-      margin: 10px;
+      transition: background 0.3s, box-shadow 0.3s;
     }
     .cta-button:hover {
       background: #4b0082;
+      box-shadow: 0 0 10px #FF0000;
     }
     .about, .services, .contact {
       background: #2c0055;
@@ -119,6 +120,13 @@
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       text-align: center;
+    }
+    .about h2, .services h2, .contact h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: #800080;
+      text-shadow: 0 0 5px #800080;
+      margin-bottom: 20px;
     }
     .about p {
       font-size: 18px;
@@ -147,6 +155,15 @@
       color: #d8b9ff;
       margin-bottom: 10px;
     }
+    .service-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      color: #d8b9ff;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 14px;
+    }
     .contact a {
       color: #d8b9ff;
       text-decoration: none;
@@ -155,160 +172,9 @@
       transition: color 0.3s, text-decoration 0.3s;
     }
     .contact a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-    /* Shop Section Styles */
-    .shop-hero {
-      padding: 60px 20px;
-      text-align: center;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1920x1080/?stars') no-repeat center center/cover;
-    }
-    .shop-hero h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
-      color: #800080;
-      text-shadow: 0 0 10px #800080;
-      margin-bottom: 20px;
-    }
-    .shop-hero p {
-      font-size: 20px;
-      color: #d8b9ff;
-    }
-    .category-section {
-      padding: 60px 20px;
-    }
-    .category-section h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      color: #800080;
-      text-shadow: 0 0 5px #800080;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .product-card {
-      background: #2c0055;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      width: 250px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 2px solid #800080;
-    }
-    .product-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #FF0000;
-    }
-    .product-card h4 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
-      color: #d8b9ff;
-      margin-bottom: 10px;
-    }
-    .product-card p {
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-    .product-card .price {
-      font-size: 18px;
       color: #FF0000;
-      font-weight: bold;
-      margin-bottom: 20px;
       text-shadow: 0 0 5px #FF0000;
-    }
-    .unlock-button {
-      padding: 10px 20px;
-      background: #800080;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    .unlock-button:hover {
-      background: #4b0082;
-      box-shadow: 0 0 10px #FF0000;
-    }
-    /* Modal Styling */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: #2c0055;
-      padding: 40px;
-      border-radius: 10px;
-      text-align: center;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 0 20px #800080;
-      position: relative;
-      border: 2px solid #FF0000;
-    }
-    .modal-content h3 {
-      color: #800080;
-      text-shadow: 0 0 10px #800080;
-      margin-bottom: 20px;
-      font-size: 28px;
-    }
-    .modal-content p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-    .modal-content a {
-      color: #FF0000;
-      text-decoration: none;
-      font-weight: bold;
-      text-shadow: 0 0 5px #FF0000;
-    }
-    .modal-content a:hover {
       text-decoration: underline;
-    }
-    .modal-content input[type="email"] {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 2px solid #800080;
-      border-radius: 5px;
-      background: #1a0033;
-      color: #fff;
-      font-size: 16px;
-    }
-    .modal-content button {
-      padding: 10px 20px;
-      background: #FF0000;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .modal-content button:hover {
-      background: #d00000;
-    }
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      color: #FF0000;
-      cursor: pointer;
     }
     footer {
       background: #1a0033;
@@ -355,17 +221,11 @@
       .service-card {
         width: 80%;
       }
-      .shop-hero h2 {
-        font-size: 36px;
+      .about h2, .services h2, .contact h2 {
+        font-size: 28px;
       }
-      .shop-hero p {
+      .about p, .contact p {
         font-size: 16px;
-      }
-      .product-card {
-        width: 80%;
-      }
-      .modal-content {
-        padding: 20px;
       }
     }
   </style>
@@ -383,7 +243,6 @@
       <h1>AFU – Your Creative Partner</h1>
       <nav>
         <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('shop')">Shop</a>
         <a href="#" onclick="showPage('contact')">Contact</a>
       </nav>
     </div>
@@ -407,8 +266,8 @@
     </section>
     <section id="services" data-aos="fade-up">
       <div class="container">
-        <h2>What We Offer</h2>
         <div class="services">
+          <h2>What We Offer</h2>
           <div class="service-grid">
             <div class="service-card">
               <i class="fas fa-paint-brush"></i>
@@ -455,58 +314,7 @@
       </div>
     </section>
   </section>
-  <!-- Shop Page Section -->
-  <section id="shop" class="page-section">
-    <section class="shop-hero">
-      <div class="container">
-        <h2>Unlock Exclusive AFU Resources</h2>
-        <p>Explore premium guides, templates, and more to elevate your brand.</p>
-      </div>
-    </section>
-    <!-- Category: Guides -->
-    <section class="category-section">
-      <div class="container">
-        <h3>Guides</h3>
-        <div class="product-grid">
-          <div class="product-card">
-            <h4>From Invisible to Unforgettable</h4>
-            <p>A 24-law guide to make your brand iconic, packed with insider secrets.</p>
-            <p class="price">$49</p>
-            <a href="#" class="unlock-button" onclick="openModal('book1', 'From Invisible to Unforgettable', 'book.html')">Unlock Now</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Category: Templates -->
-    <section class="category-section">
-      <div class="container">
-        <h3>Templates</h3>
-        <div class="product-grid">
-          <div class="product-card">
-            <h4>Neon Social Media Template Pack</h4>
-            <p>10 Canva templates in AFU’s neon style for Instagram and X.</p>
-            <p class="price">$29</p>
-            <a href="#" class="unlock-button" onclick="openModal('template1', 'Neon Social Media Template Pack', 'https://www.canva.com/your-template-link')">Unlock Now</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Category: Checklists -->
-    <section class="category-section">
-      <div class="container">
-        <h3>Checklists</h3>
-        <div class="product-grid">
-          <div class="product-card">
-            <h4>Brand Power Checklist</h4>
-            <p>A 24-point checklist to audit your brand’s strength.</p>
-            <p class="price">Free</p>
-            <a href="#" class="unlock-button" onclick="openModal('checklist1', 'Brand Power Checklist', 'https://yourdomain.com/brand-power-checklist.pdf')">Unlock Now</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
-  <!-- Contactouille Page Section -->
+  <!-- Contact Page Section -->
   <section id="contact" class="page-section">
     <div class="container">
       <div class="contact">
@@ -519,21 +327,6 @@
       </div>
     </div>
   </section>
-  <!-- Modal for Gated Access -->
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">×</span>
-      <h3 id="modalTitle">Unlock Product</h3>
-      <p>To access this exclusive resource, please follow these steps:</p>
-      <p>1. Follow us on Instagram: <a href="https://instagram.com/sko.afu" target="_blank">@sko.afu</a></p>
-      <p>2. Enter your email below to receive access:</p>
-      <form id="productAccessForm" onsubmit="handleSubmit(event)">
-        <input type="email" id="emailInput" placeholder="Your Email" required>
-        <input type="hidden" id="productLink" value="">
-        <button type="submit">Get Access</button>
-      </form>
-    </div>
-  </div>
   <footer>
     <p>© 2023 AFU. All rights reserved.</p>
   </footer>
@@ -547,30 +340,6 @@
       });
       document.getElementById(pageId).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    // Modal Functions
-    const modal = document.getElementById('productModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const productLinkInput = document.getElementById('productLink');
-    function openModal(productId, title, link) {
-      modalTitle.textContent = `Unlock ${title}`;
-      productLinkInput.value = link;
-      modal.style.display = 'flex';
-    }
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        closeModal();
-      }
-    }
-    function handleSubmit(event) {
-      event.preventDefault();
-      const email = document.getElementById('emailInput').value;
-      const link = productLinkInput.value;
-      console.log('Email captured:', email); // For testing
-      window.location.href = link;
     }
   </script>
 </body>
