@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +77,7 @@
       display: block;
     }
     /* Neon Text Effect */
-    h2, .service-card h3 {
+    h2, .service-card h3, .shop-item h4 {
       font-family: 'Bebas Neue', sans-serif;
       text-shadow: 0 0 5px #800080, 0 0 10px #800080, 0 0 15px #800080;
       animation: neonFlicker 3s infinite;
@@ -204,7 +205,7 @@
       position: relative;
       z-index: 10;
     }
-    .shop-theme h2, .shop-theme p {
+    .shop-theme h2, .shop-theme p, .shop-theme h4 {
       color: #fff;
       text-shadow: 0 0 5px #fff;
     }
@@ -226,6 +227,14 @@
       padding: 20px;
       border-radius: 10px;
       margin: 20px 0;
+    }
+    .shop-item h4 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .shop-item p {
+      font-size: 16px;
+      margin-bottom: 20px;
     }
     /* Contact Section */
     .contact .contact-buttons {
@@ -355,6 +364,12 @@
         width: 100%;
         justify-content: center;
       }
+      .shop-item h4 {
+        font-size: 20px;
+      }
+      .shop-item p {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -454,9 +469,16 @@
   <section id="shop" class="page-section shop-theme">
     <div class="container">
       <h2>Shop</h2>
-      <div class="shop-category">
-        <h3>Free</h3>
-        <p>Coming soon: Free resources like books and PDFs.</p>
+      <div class="shop-category" data-aos="fade-up">
+        <h3>Free Resources</h3>
+        <p>Unlock the secrets to building a legendary brand with our free eBook.</p>
+        <div class="shop-item">
+          <h4>The 30 Edicts of Brand Dominion</h4>
+          <p>A powerful guide to conquering the modern market with cunning and creativity. Download now and ignite your brand’s potential.</p>
+          <a href="https://drive.google.com/uc?export=download&id=[YOUR_FILE_ID]" class="cta-button" aria-label="Download The 30 Edicts of Brand Dominion eBook" role="button" tabindex="0" target="_blank">
+            <i class="fas fa-download"></i> Download Free eBook
+          </a>
+        </div>
       </div>
     </div>
     <!-- White Flying Dots for Shop Page -->
@@ -553,3 +575,42 @@
   </script>
 </body>
 </html>
+```
+
+**Instructions to Finalize Integration**:
+
+1. **Create and Host the PDF**:
+   - If you haven’t already, use **Canva (www.canva.com)** to create the PDF from the OCR-extracted manuscript (*The 30 Edicts of Brand Dominion*). Copy the text from the provided document, paste it into a 6x9-inch Canva eBook template, and format it with a title page, table of contents, and one edict per page (using Garamond for body text, Bebas Neue for titles). Design a cover with a dark background and a bold image (e.g., a crown or flame) to match AFU’s aesthetic. Download as “PDF Print” and name it `30_Edicts_of_Brand_Dominion.pdf`.
+   - Upload the PDF to **Google Drive**. Right-click, select “Share,” set to “Anyone with the link can view,” and copy the link (e.g., `https://drive.google.com/file/d/1A2B3C4D5E6F7G8H9I0J/view?usp=sharing`). Convert it to a direct download link by changing `/view?usp=sharing` to `/uc?export=download`, resulting in `https://drive.google.com/uc?export=download&id=1A2B3C4D5E6F7G8H9I0J`. Alternatively, use **Dropbox**: upload, generate a shareable link, and change `?dl=0` to `?dl=1`.
+
+2. **Update the Download Link**:
+   - In the `<section id="shop">` code above, replace `https://drive.google.com/uc?export=download&id=[YOUR_FILE_ID]` with your actual direct download link. For example, if your Google Drive file ID is `1A2B3C4D5E6F7G8H9I0J`, the link becomes `https://drive.google.com/uc?export=download&id=1A2B3C4D5E6F7G8H9I0J`.
+
+3. **Save and Deploy the HTML**:
+   - Copy the entire HTML code above into a text editor (e.g., VS Code, Notepad, or an online editor like CodePen). Save it as `index.html`, replacing your original file.
+   - If your site is hosted (e.g., on GitHub Pages, Netlify, or another provider), upload the updated `index.html` to your server. For GitHub Pages, push the file to your repository’s main branch. For local testing, open the file in a browser.
+   - Navigate to the “Shop” section, click the “Download Free eBook” button, and confirm the PDF downloads correctly. Verify the styling on mobile and desktop—the button should glow with the neon effect, and the text should be readable.
+
+4. **Ensure Accessibility**:
+   - The download link includes ARIA attributes (`aria-label`, `role`, `tabindex`) for accessibility, matching your site’s standards. Ensure the PDF is accessible: Canva’s text-based PDFs are screen-reader-friendly, but add alt text to any cover images in Canva’s editor (e.g., “Cover image of a crown for The 30 Edicts of Brand Dominion”).
+
+5. **Optional Enhancements**:
+   - **Email Collection**: To build an audience, use **Mailchimp** (free plan) to create a form requiring an email for the download. Replace the `<a>` tag in the shop section with a Mailchimp embed code, like:
+     ```html
+     <form action="[MAILCHIMP_FORM_URL]" method="post">
+       <input type="email" name="EMAIL" placeholder="Your Email" required>
+       <button type="submit" class="cta-button">Get eBook</button>
+     </form>
+     ```
+     Update the description to prompt email entry.
+   - **Analytics**: Track downloads by shortening the Google Drive link with **Bitly** (free) and monitoring clicks, or use Google Analytics (if integrated) to track button clicks.
+   - **Future Shop Items**: Add more free resources (e.g., templates) by duplicating the `.shop-item` div structure.
+
+**Why This Works**: The updated shop section transforms the placeholder into a functional offering, positioning *The 30 Edicts* as a valuable free resource that showcases AFU’s branding expertise. The neon-styled button and AOS animation (`data-aos="fade-up"`) blend seamlessly with the site’s aesthetic, while the Google Drive link ensures a cost-free, reliable download. The eBook reinforces AFU’s mission to elevate brands, tying into services like branding and digital marketing.
+
+**Testing and Deployment**:
+- Test the site locally or on your server to ensure the shop section displays correctly and the download works.
+- Check the PDF’s formatting (created in Canva) to confirm it’s professional, with clear text and a bold cover.
+- If hosting on a platform like Netlify, drag and drop the updated `index.html` into your project dashboard.
+
+If you need help creating the PDF, generating the download link, or integrating email collection, let me know, and I’ll provide detailed steps. You can also expand the shop with more items or tweak the design further—just ask!
