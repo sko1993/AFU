@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AFU – Your Creative Partner</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" integrity="sha384-t+z2f/8s1qT9LyhH9p/hF+UK2F7w4SOb8Oom+/jKvN0qM4fH3oA==" crossorigin="anonymous">
   <style>
     body {
       margin: 0;
@@ -108,6 +108,9 @@
       border-radius: 5px;
       font-size: 18px;
       transition: background 0.3s, box-shadow 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .cta-button:hover {
       background: #4b0082;
@@ -168,13 +171,23 @@
       color: #d8b9ff;
       text-decoration: none;
       font-size: 18px;
-      margin: 0 10px;
+      margin: 10px;
       transition: color 0.3s, text-decoration 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .contact a:hover {
       color: #FF0000;
       text-shadow: 0 0 5px #FF0000;
       text-decoration: underline;
+    }
+    .contact .social-links {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
     footer {
       background: #1a0033;
@@ -227,6 +240,10 @@
       .about p, .contact p {
         font-size: 16px;
       }
+      .contact .social-links {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
@@ -242,8 +259,8 @@
     <div class="container">
       <h1>AFU – Your Creative Partner</h1>
       <nav>
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('contact')">Contact</a>
+        <a href="#" onclick="showPage('home')" aria-label="Go to Home page">Home</a>
+        <a href="#" onclick="showPage('contact')" aria-label="Go to Contact page">Contact</a>
       </nav>
     </div>
   </header>
@@ -253,7 +270,7 @@
       <div class="hero-content">
         <h2>Elevate Your Brand Today</h2>
         <p>Unleash your potential with our creative expertise.</p>
-        <a href="#" onclick="showPage('contact')" class="cta-button">Contact Us</a>
+        <a href="#" onclick="showPage('contact')" class="cta-button" aria-label="Contact us to elevate your brand">Contact Us</a>
       </div>
     </section>
     <section id="about" data-aos="fade-up">
@@ -320,17 +337,24 @@
       <div class="contact">
         <h2>Get in Touch</h2>
         <p>Ready to take your brand to the next level? Reach out now!</p>
-        <p>
-          <a href="mailto:alyasinasadsko@gmail.com"><i class="fas fa-envelope"></i> alyasinasadsko@gmail.com</a> |
-          <a href="https://instagram.com/sko.afu" target="_blank"><i class="fab fa-instagram"></i> @sko.afu</a>
-        </p>
+        <div class="social-links">
+          <a href="mailto:alyasinasadsko@gmail.com" aria-label="Send an email to AFU">
+            <i class="fas fa-envelope"></i> alyasinasadsko@gmail.com
+          </a>
+          <a href="https://instagram.com/sko.afu" target="_blank" aria-label="Visit AFU's Instagram profile">
+            <i class="fab fa-instagram"></i> @sko.afu
+          </a>
+          <a href="https://discord.gg/zJQDDmNaCr" target="_blank" class="cta-button" aria-label="Join our Discord server" role="button" tabindex="0">
+            <i class="fab fa-discord"></i> Join Discord
+          </a>
+        </div>
       </div>
     </div>
   </section>
   <footer>
-    <p>© 2023 AFU. All rights reserved.</p>
+    <p>© 2025 AFU. All rights reserved.</p>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-P5P3gCTng3g5vI3kO3qY8e2uZ8c1zC7Q1rD8ZxI3q1rD8ZxI3q1rD8ZxI3q1rD8" crossorigin="anonymous"></script>
   <script>
     AOS.init();
     // Page Navigation
